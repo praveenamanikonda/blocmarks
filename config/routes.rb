@@ -1,10 +1,8 @@
 Rails.application.routes.draw do
   devise_for :users
-  get 'test/robots'
-
-  get "welcome/index"
-  get "welcome/about"
+  get 'about' => 'welcome#about'
   
+  post :incoming, to: 'incoming#create'
   root to: 'welcome#index'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
