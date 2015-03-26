@@ -1,10 +1,15 @@
 Rails.application.routes.draw do
+  get 'users/show'
+
  resources :topics do
-   resources :bookmarks, except: [:index], controller: 'bookmarks'
+   resources :bookmarks, except: [:index], controller: 'bookmarks' do 
      resources :likes, only: [:create, :destroy]
-  end   
+   end   
+ end   
 
   devise_for :users
+   resources :users, only: [:show]
+  
   get 'about' => 'welcome#about'
   
   post :incoming, to: 'incoming#create'

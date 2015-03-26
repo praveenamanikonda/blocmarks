@@ -16,4 +16,8 @@ class UsersController < ApplicationController
       end   
     end   
   end 
+  
+  def show
+    @liked_bookmarks = current_user.liked_bookmarks
+  end
 end   

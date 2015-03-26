@@ -11,4 +11,14 @@ class User < ActiveRecord::Base
     likes.where(bookmark_id: bookmark.id).first 
   end
    
+  def liked_bookmarks
+    @likes_bookmarks = []
+    @all_bookmarks = Bookmark.all
+    @all_bookmarks.each do |bookmark| 
+      if self.liked(bookmark)
+        @likes_bookmarks << bookmark
+      end   
+    end 
+    @likes_bookmarks 
+  end   
 end
